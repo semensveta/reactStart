@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import store from 'stores';
 import routes from 'routes';
+import Header from '../../components/header';
+import Navigation from '../../components/nav';
 
 // TODO: better way to do conditional requires with webpack?
 const { DevTools, LogMonitor, DebugPanel } = (function () {
@@ -50,6 +52,8 @@ export default class ClientApp extends React.Component {
   render () {
     return (
       <div>
+        <Header/>
+        <Navigation />
         {__DEBUG__ && this.renderDevTools()}
         <Provider store={store}>
           {() => this.renderRouter()}

@@ -2,7 +2,10 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as TodoActionCreators from 'actions/todo';
-import TodoList from 'components/todo-list';
+import TestComponent from 'components/test'
+import Dashboard from '../../components/dashboard';
+import Plan from '../../components/plan';
+import Appliance from '../../components/appliance';
 
 // TODO: make the create-todo form a component so that a bound action
 // can be provided rather than manually using this.props.dispatch(action)
@@ -35,37 +38,34 @@ export default class HomeView extends React.Component {
     });
   }
 
-  renderNewTodoForm () {
-    return (
-      <form onSubmit={::this._createTodo}>
-        <div className='row'>
-          <div className='col-sm-9'>
-            <input className='form-control'
-                   placeholder='Do something else!'
-                   value={this.state.todo}
-                   onChange={this._bindTo('todo')} />
-          </div>
-          <div className='col-sm-3'>
-            <button type='submit' className='btn btn-block btn-default'>
-              Create Todo
-            </button>
-          </div>
-        </div>
-      </form>
-    );
-  }
-
   render () {
     const todos = this.props.todos.toJS();
+    let appliances = [
+        {name:'Robot Vacuum',state: true},
+        {name:'Washer',state: true},
+        {name:'Dryer',state: true},
+        {name:'Refrigirator',state: true},
+        {name:'Coffe Mashine',state: true},
+        {name:'Owen',state: true},
+    ];
+    let rooms = [
+        {name:'Living Room',state: true},
+        {name:'Bedroom',state: true},
+        {name:'Kitchen',state: true},
+        {name:'Bathroom',state: true},
+        {name:'Restroom',state: true},
+        {name:'Hall',state: true},
+    ];
+
 
     return (
-      <div className='view view--home'>
-        <div className='row'>
-          <div className='col-md-8 col-md-offset-2'>
-            <TodoList todos={todos} {...this._todoActions} />
-            {this.renderNewTodoForm()}
-          </div>
-        </div>
+      <div>
+        <Dashboard>
+          <Appliance appliances={appliances} />
+          <Appliance appliances={rooms} />
+          <Plan />
+          <TestComponent />
+        </Dashboard>
       </div>
     );
   }
