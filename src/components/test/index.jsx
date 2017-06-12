@@ -10,7 +10,7 @@ export default class TestComponent extends React.Component {
       this.state = {
         numbers: [1, 2, 3, 4, 5, 6]
       };
-      this.eventHandler = this.eventHandler.bind(this);
+      // this.eventHandler = this.eventHandler.bind(this);
     }
 
     numberList () {
@@ -22,12 +22,14 @@ export default class TestComponent extends React.Component {
           <ul>{listItems}</ul>
       );
     }
-    eventHandler (event) {
+
+    eventHandler = () => {
       console.log(this);
       this.setState((prevState) =>
-      prevState.numbers.push(prevState.numbers[prevState.numbers.length-1]+ 1));
+      prevState.numbers.push(
+          prevState.numbers[prevState.numbers.length - 1] + 1));
       console.log('HI,event!');
-    }
+    };
 
   render () {
     return (
