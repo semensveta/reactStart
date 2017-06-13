@@ -5,7 +5,7 @@ import {
   TODO_CREATE,
   TODO_DESTROY,
   TODO_TOGGLE_COMPLETE
-} from 'constants/todo';
+} from 'constants/list';
 
 
 const createTodoItem = (copy) => Immutable.Map({
